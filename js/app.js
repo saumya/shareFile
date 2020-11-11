@@ -8,6 +8,8 @@ $(function(){
     console.log('Ready!');
     //console.log( $('#in_File')[0] );
     //console.log( $('#btn_upload')[0] );
+
+    const fileObj = {};
     
     $('#in_File').on('change', function(event){
         //console.log( 'change', new Date() );
@@ -46,7 +48,36 @@ $(function(){
             }
         });
         reader.readAsDataURL(file);
+        //
+        fileObj.file = file;
+        //
+        return false;
+    });
 
+    $('#btn_upload').on('click', function(event){
+
+        //console.log('Btn Upload');
+        //console.log('fileObj', fileObj );
+        const url1 = 'https://file.io';
+        //
+        $.ajax({
+            method : 'POST',
+            crossDomain : true,
+            url : url1,
+            data : "text=testing data",
+            error: function(err){
+                console.log('ERROR');
+                console.log( err );
+            },
+            success: function(sResult){
+                console.log('success');
+                console.log( sResult );
+            }
+        }).done(function(result){
+            console.log('+-done------------------------');
+            console.log( result );
+            console.log('+-done------------------------');
+        })
         //
         return false;
     });
