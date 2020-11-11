@@ -64,18 +64,21 @@ $(function(){
             method : 'POST',
             crossDomain : true,
             url : url1,
-            data : "text=testing data",
+            data : "text=This is testing of the API.",
             error: function(err){
                 console.log('ERROR');
                 console.log( err );
             },
             success: function(sResult){
                 console.log('success');
-                console.log( sResult );
+                //console.log( sResult );
+                //$('#d_result').text( JSON.stringify(sResult) );
             }
         }).done(function(result){
             console.log('+-done------------------------');
             console.log( result );
+            //$('#d_result').text( JSON.stringify(result) );
+            $('#d_result').text( 'Sharable Link - '+ result.link );
             console.log('+-done------------------------');
         })
         //
