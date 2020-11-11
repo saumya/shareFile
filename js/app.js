@@ -18,9 +18,19 @@ $(function(){
         const fileName = name.substring(0, lastDot);
         const ext = name.substring(lastDot + 1);
 
-        console.log(fileName);
-        console.log(ext);
+        console.log('name', fileName);
+        console.log('extension', ext);
+        //
+        //const reader = new FileReader();
+        //console.log( 'reader', reader );
 
+        const file = event.target.files[0];
+        console.log( 'file', file );
+        console.log( 'name', file.name );
+        console.log( 'size', file.size );
+        console.log( 'type', file.type );
+
+        //
         return false;
     });
 });
