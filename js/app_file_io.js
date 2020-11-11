@@ -103,11 +103,13 @@ $(function(){
         form_data.append('file', fileObj.fileData);
         */
 
-        console.log( fileObj.file )
-        console.log( fileObj.file.name )
+        //console.log( fileObj.file )
+        //console.log( fileObj.file.name )
 
-        const data1 = ('@text='+fileObj.file.name );
-        console.log('data1', data1);
+        const data1 = ('file=@'+fileObj.file.name );
+        //const data1 = ('file=@'+fileObj.fileData );
+
+        //console.log('data1', data1);
         $.ajax({
             method : 'POST',
             url : url1,
