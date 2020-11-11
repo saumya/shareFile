@@ -62,7 +62,7 @@ $(function(){
         //
         $.ajax({
             method : 'POST',
-            crossDomain : true,
+            
             url : url1,
             data : "text=This is testing of the API.",
             error: function(err){
