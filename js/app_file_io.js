@@ -130,14 +130,13 @@ $(function(){
 
     $('#fileupload').fileupload({
         dataType: 'json',
-        error : function(err){
-            console.log('Error', err);
-        },
         done: function (e, data) {
             console.log('done');
             console.log( data.result );
 
-            $('<p></p>').text(data.result.link).appendTo(document.body);
+            $('#d_result').text( JSON.stringify(data.result) );
+
+            //$('<p></p>').text(data.result.link).appendTo(document.body);
         }
     });
     
