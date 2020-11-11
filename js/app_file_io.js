@@ -128,6 +128,7 @@ $(function(){
         return false;
     });
 
+    // JQuery Plugin
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -139,7 +140,46 @@ $(function(){
             //$('<p></p>').text(data.result.link).appendTo(document.body);
         }
     });
-    
-});
 
+    // JQuery | Without any plugin
+    $("#i_upload").click(function() {
+        var fileInput = jQuery('#i_file')[0];
+        if (!fileInput.files.length) {
+            alert("First choose a file.");
+            return;
+        }
+    
+        // Check here for browser support for FormData:
+        // https://developer.mozilla.org/en-US/docs/Web/API/FormData
+            
+        var data = new FormData();
+        jQuery.each(fileInput.files, function(i, file) {
+            data.append('file', file);
+        });    
+
+        jQuery.ajax({
+            url: 'https://file.io/',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            error: function(err) {
+                console.log('ERROR')
+                console.log(err.responseText);
+            },
+            success: function(data){
+                console.log( 'success');
+                console.log( data );
+                //$('<p></p>').text(data.link).appendTo(document.body);
+                $('#d_result').text( JSON.stringify(data) );
+            }
+        });
+    });//Click 'Upload' Button
+
+    
+});// End JQuery 'Ready'
+
+
+  
 
