@@ -9,7 +9,10 @@ $(function(){
     //console.log( $('#in_File')[0] );
     //console.log( $('#btn_upload')[0] );
 
-    const fileObj = {};
+    const fileObj = {
+        file: {},
+        fileData: {}
+    };
     
     $('#in_File').on('change', function(event){
         //console.log( 'change', new Date() );
@@ -40,6 +43,8 @@ $(function(){
             //img.src = event.target.result;
             $('#img_file')[0].src = event.target.result;
             //$('#img_file').src = event.target.result;
+            //console.log('load', event.target.result);
+            fileObj.fileData = event.target.result;
         });
         reader.addEventListener('progress', (event) => {
             if (event.loaded && event.total) {
@@ -48,7 +53,8 @@ $(function(){
             }
         });
         reader.readAsDataURL(file);
-        //
+
+        // Setting the `file` in the variable above to be used further
         fileObj.file = file;
         //
         return false;
@@ -58,13 +64,16 @@ $(function(){
 
         //console.log('Btn Upload');
         //console.log('fileObj', fileObj );
+
+        /*
         const url1 = 'https://file.io';
+        const data1 = 'text= This is the testing of the API server.'
         //
+        // sending the 'text' Data to the server.
         $.ajax({
             method : 'POST',
-            
             url : url1,
-            data : "text=This is testing of the API.",
+            data : data1,
             error: function(err){
                 console.log('ERROR');
                 console.log( err );
@@ -80,7 +89,43 @@ $(function(){
             //$('#d_result').text( JSON.stringify(result) );
             $('#d_result').text( 'Sharable Link - '+ result.link );
             console.log('+-done------------------------');
-        })
+        });
+        */
+        
+
+        
+        // Sending the image data
+        const url1 = 'https://file.io';
+        
+        //const fileData = fileObj.fileData;
+        /*
+        let form_data = new FormData();
+        form_data.append('file', fileObj.fileData);
+        */
+
+        console.log( fileObj.file )
+        console.log( fileObj.file.name )
+
+        const data1 = ('@text='+fileObj.file.name );
+        console.log('data1', data1);
+        $.ajax({
+            method : 'POST',
+            url : url1,
+            data : data1,
+            error : function(err){ 
+                console.log('Error', err); 
+                //console.log( err.responseText );
+                console.log('');
+                console.log( 'err.responseText', err.responseText );
+            },
+            success : function(result){ 
+                console.log('Result', result);
+            }
+        });
+        
+        
+        
+       
         //
         return false;
     });
