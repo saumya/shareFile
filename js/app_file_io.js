@@ -129,6 +129,7 @@ $(function(){
     });
 
     // ======================================================================
+    /*
     // JQuery | With Plugin
     $('#fileupload').fileupload({
         dataType: 'json',
@@ -139,6 +140,7 @@ $(function(){
             //$('<p></p>').text(data.result.link).appendTo(document.body);
         }
     });
+    */
     // ======================================================================
 
     // JQuery | Without any plugin
