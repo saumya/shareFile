@@ -192,7 +192,8 @@ $(function(){
                 console.log( 'success');
                 console.log( data );
                 //$('<p></p>').text(data.link).appendTo(document.body);
-                $('#d_result').text( JSON.stringify(data) );
+                //$('#d_result').text( JSON.stringify(data) );
+                $('#d_result').html( 'Get the file at : <br>' + data.link );
             }
         });
     });//Click 'Upload' Button

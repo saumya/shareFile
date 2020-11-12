@@ -1,6 +1,8 @@
 File Upload Experiement
 =========================
 
+
+First, it was implemented with a plugin. 
 Need the [Jquery plugin][2] and [here is doc][1] for the same.
 
 
