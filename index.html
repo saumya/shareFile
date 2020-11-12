@@ -20,10 +20,12 @@
     <section class="hero is-dark is-fullheight">
         <div class="hero-body">
             <div class="container">
-                <p class="title">Easy</p>
-                <p class="subtitle">File Upload</p>
+                <p class="title">Easy Share</p>
+                <p class="subtitle">File Upload and share the link</p>
                 
-                <div id="d_result" class="content"></div>
+                <div class="content">
+                    <div id="d_result" class="has-text-warning">Link will be displayed here</div>
+                </div>
                 <!--
                 <div>
                     <input class="button is-warning" type="file" id="in_File" name='inputfile'>
@@ -40,9 +42,12 @@
                 -->
 
                 <div class="section">
-                    <h1 class="subtitle">Without JQuery Plugin</h1>
-                    <input id="i_file" type="file">
-                    <button id="i_upload">Upload</button>
+                    <!-- <h1 class="subtitle">Without JQuery Plugin</h1> -->
+                    <input id="i_file" type="file" class="button is-warning">
+                    <button id="i_upload" class="button is-black">Upload</button>
+                </div>
+                <div class="section">
+                    <img src="" alt="" id="img_file" width="300px;">
                 </div>
                 
                 

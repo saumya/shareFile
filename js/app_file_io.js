@@ -128,20 +128,40 @@ $(function(){
         return false;
     });
 
-    // JQuery Plugin
+    // ======================================================================
+    // JQuery | With Plugin
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
             console.log('done');
             console.log( data.result );
-
             $('#d_result').text( JSON.stringify(data.result) );
-
             //$('<p></p>').text(data.result.link).appendTo(document.body);
         }
     });
+    // ======================================================================
 
     // JQuery | Without any plugin
+    // UI Selection
+    $('#i_file').on('change', function(event){
+        console.log('change');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        //
+        reader.addEventListener('load', (event) => {
+            $('#img_file')[0].src = event.target.result;
+            //fileObj.fileData = event.target.result;
+        });
+        //
+        reader.addEventListener('progress', (event) => {
+            if (event.loaded && event.total) {
+              const percent = (event.loaded / event.total) * 100;
+              console.log(`Progress: ${Math.round(percent)}`);
+            }
+        });
+        reader.readAsDataURL(file);
+    });
+    // Upload
     $("#i_upload").click(function() {
         var fileInput = jQuery('#i_file')[0];
         if (!fileInput.files.length) {
