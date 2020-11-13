@@ -6,6 +6,13 @@ console.groupEnd();
 //
 $(function(){
     console.log('Ready!');
+    
+    // Utility functions
+    const showProgress = function(){ $('#id_progress').show(); }
+    const hideProgress = function(){ $('#id_progress').hide(); }
+    // Utility functions /
+    hideProgress();
+    
     //console.log( $('#in_File')[0] );
     //console.log( $('#btn_upload')[0] );
 
@@ -165,6 +172,8 @@ $(function(){
     });
     // Upload
     $("#i_upload").click(function() {
+        showProgress();
+        //
         var fileInput = jQuery('#i_file')[0];
         if (!fileInput.files.length) {
             alert("First choose a file.");
@@ -195,10 +204,17 @@ $(function(){
                 console.log( data );
                 //$('<p></p>').text(data.link).appendTo(document.body);
                 //$('#d_result').text( JSON.stringify(data) );
-                $('#d_result').html( 'Get the file at : <br>' + data.link );
+                $('#d_result').html( 'Get the file at : <br> <a id="id_download_link" download class="has-text-warning" href="' + data.link + '">'+ data.link +'</a>' );
+
+                //$('#id_download_link')[0].href = data.link;
+
+                hideProgress();
             }
         });
     });//Click 'Upload' Button
+
+    
+
 
     
 });// End JQuery 'Ready'
