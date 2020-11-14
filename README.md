@@ -1,6 +1,8 @@
 File Upload Experiement
 =========================
 
+Experimenting with a file upload and download technique where privacy is in focus.
+
  - The [first implementation][s1] is here
 
 First, it was implemented with a plugin. 
