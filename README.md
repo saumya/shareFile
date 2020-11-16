@@ -1,7 +1,7 @@
 File Upload Experiement
 =========================
 
-Experimenting with a file upload and download technique where privacy is in focus.
+File uploading with [file.io][3]
 
  - The [first implementation][s1] is here
 
